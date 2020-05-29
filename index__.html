@@ -1,0 +1,124 @@
+<style>
+  .cloudpayments-widget {
+    font-family: "Formular", sans-serif;
+    width: 100%;
+    display: table;
+    box-sizing: border-box;
+  }
+  .cloudpayments-widget * {
+    font-family: "Formular", sans-serif;
+    box-sizing: border-box;
+  }
+  .cloudpayments-widget__h1 {
+    font-size: 46px;
+    line-height: 55px;
+    margin-bottom: 58px;
+    text-transform: uppercase;
+  }
+  .cloudpayments-widget__row {
+    width: 100%;
+    display: flex;
+    align-items: space-between;
+  }
+  .cloudpayments-widget__button {
+    outline: none;
+    cursor: pointer;
+    width: 100%;
+    height: 63px;
+    border: 2px solid black;
+    font-size: 30px;
+  }
+  .cloudpayments-widget__button:hover {
+    background-color: black;
+    border: 2px solid #24DE06;
+    color: #24DE06;
+  }
+
+  .third {
+    width: calc((100% - 18px) / 3)
+  }
+  .two-third {
+    width: calc((100% - 18px) / 3 * 2 + 9px)
+  }
+
+</style>
+<form
+  class="cloudpayments-widget"
+  action="javascript:cloudpaymentsPay()"
+>
+  <h1 class="cloudpayments-widget__h1">Поддержите фестиваль</h1>
+  <div class="cloudpayments-widget__row">
+    <div
+      class="cloudpayments-widget__button third"
+      id="cloudpayments-widget__button__300"
+      onclick="setAmount(300)"
+    >
+      300 ₽
+    </div>
+    <div
+      class="cloudpayments-widget__button third"
+    >
+      500 ₽
+    </div>
+    <div
+      class="cloudpayments-widget__button third"
+    >
+      1 000 ₽
+    </div>
+  </div>
+  <div class="cloudpayments-widget__row">
+    <div
+      class="cloudpayments-widget__button third"
+      id="cloudpayments-widget__button__300"
+      onclick="setAmount(300)"
+    >
+      300 ₽
+    </div>
+    <div
+      class="cloudpayments-widget__button two-third"
+      onclick="setAmount()"
+    >
+      <input 
+    </div>
+  </div>
+  <div class="cloudpayments-widget__row">
+  </div>
+</form>
+
+<script>
+  var currentAmount = 300
+  const buttonList = [300, 500, 1000, 1500]
+
+  const setAmount = function (amount) {
+    currentAmount = amount
+
+
+    const selectedButton = document.getElementById("cloudpayments-widget__button__" + amount)
+
+    if (true)
+      return
+  }
+
+  const cloudpaymentsPay = function (amount, email) {
+    var widget = new cp.CloudPayments();
+
+    widget.charge({
+      publicId: 'test_api_00000000000000000000001',  //id из личного кабинета
+      description: 'Пример оплаты (деньги сниматься не будут)', //назначение
+      amount: 10, //сумма
+      currency: 'RUB', //валюта
+      // invoiceId: '1234567', //номер заказа  (необязательно)
+      accountId: email, //идентификатор плательщика (необязательно)
+      skin: "mini", //дизайн виджета
+      // data: {
+      //   myProp: 'myProp value' //произвольный набор параметров
+      // }
+    },
+    function (options) { // success
+      console.log("successful payment")
+    },
+    function (reason, options) { // fail
+      console.log("failed payment")
+    });
+  };    
+</script>

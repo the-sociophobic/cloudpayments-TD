@@ -1,0 +1,129 @@
+// @import '~bootstrap/scss/bootstrap.scss'
+
+  
+// body
+//   margin: 0
+//   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
+//   -webkit-font-smoothing: antialiased
+//   -moz-osx-font-smoothing: grayscale
+
+// code
+//   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace
+
+@font-face
+  font-family: 'Formular'
+  src: url('https://schedule.tochkadostupa.spb.ru/2020/Formular.otf') //format('truetype')
+
+$green: #24DE06
+$red: #A72E2E
+$button-margin: 9px
+
+
+.pay-form
+  width: 100%
+  font-family: "Formular", sans-serif
+  box-sizing: border-box
+  *
+    font-family: "Formular", sans-serif
+    box-sizing: border-box
+  &__container
+    box-sizing: border-box
+    width: 842px
+    margin-left: calc((100% - 842px) / 2)
+    @media screen and ( max-width: 1024px )
+      margin-left: 0
+      padding: 0 10px
+      width: 100%
+
+  &__h1
+    font-size: 46px
+    @media screen and ( max-width: 560px )
+      font-size: 34px
+    line-height: 55px
+    margin-bottom: 58px
+    text-transform: uppercase
+  &__row
+    width: 100%
+    margin-right: -$button-margin
+    display: flex
+    *
+      margin-right: $button-margin
+    @media screen and ( max-width: 800px )
+      flex-direction: column
+      margin-right: 0 !important
+      margin-bottom: 0 !important
+      *
+        margin-bottom: 8px
+        margin-right: 0 !important
+        width: 100% !important
+  &__buttons-row
+    @extend .pay-form__row
+    margin-bottom: 8px
+  &__input-row
+    @extend .pay-form__row
+    margin-bottom: 8px
+    margin-top: 46px
+  &__submit-row
+    @extend .pay-form__row
+    margin-top: 48px
+  &__button
+    cursor: pointer
+    width: 100%
+    height: 63px
+    border: 2px solid black
+    font-size: 30px
+    @media screen and ( max-width: 560px )
+      font-size: 24px      
+    text-align: center
+    display: flex
+    align-items: center
+    justify-content: space-around
+    text-transform: uppercase
+    &--selected
+      background-color: black
+      border: 2px solid $green
+      color: $green
+    &--submit
+      height: 67px
+      color: white
+      background-color: black
+      margin-right: 34px
+    &--input
+      width: calc(200% + #{$button-margin} * 4)
+  &__Input
+    font-family: "Formular", sans-serif
+    font-size: 30px
+    @media screen and ( max-width: 560px )
+      font-size: 24px
+    outline: none
+    border: 0
+    border-bottom: 2px solid black
+    width: 100%
+    &::placeholder
+      text-transform: uppercase
+      color: black
+    &:focus::placeholder
+      color: grey
+    &--error
+      color: $red
+      border-bottom-color: $red
+      &::placeholder
+        color: $red
+    &--email
+      width: 150%
+      margin-right: 30px
+    &--name
+      @media screen and ( max-width: 800px )
+        margin-top: 20px
+    &--amount
+      width: 90%
+      border-bottom: 0 !important
+      text-align: center !important
+      &::placeholder
+        text-align: center !important
+
+  &__small-text
+    width: 130%
+    font-size: 20px
+    line-height: 26px
+    padding-top: 4px
